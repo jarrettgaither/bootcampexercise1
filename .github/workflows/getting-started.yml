@@ -24,11 +24,14 @@ jobs:
 
   job2:
     runs-on: self-hosted
-    outputs:
-      output1: ${{steps.step1.outputs.test}}
     steps:
-      - id: step1
-        run: echo "test=howdy partner" >> "$GITHUB_OUTPUT"
+      - shell: bash
+        run: echo "Hello Partner" > my_string.txt
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my_string
+          path: my_string.txt
 
   job3:
     runs-on: self-hosted
@@ -37,6 +40,12 @@ jobs:
       matrix:
         nums: [1,2,3,4,5,6,7,8,9,10]
     steps:
-      - env:
-          OUTPUT1: ${{needs.job2.outputs.output1}}
-        run: echo "$OUTPUT1 - ${{matrix.nums}}"
+      - name: Download string
+        uses: actions/download-artifact@v4
+        with:
+          name: my_string
+      - name: printing
+      - shell: bash
+        run: |
+          value = 'cat my_string.txt'
+          echo "$value - ${{matrix.nums}}"
