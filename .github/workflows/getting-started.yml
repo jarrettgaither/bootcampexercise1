@@ -39,4 +39,4 @@ jobs:
     steps:
       - env:
           OUTPUT1: ${{needs.job2.outputs.output1}}
-        run: echo "$OUTPUT1 $matrix.nums"
+        run: echo "$OUTPUT1" "$matrix.nums"
