@@ -47,5 +47,5 @@ jobs:
       - name: printing
         shell: bash
         run: |
-          value='cat my_string.txt'
+          value=`cat my_string.txt`
           echo "$value - ${{matrix.nums}}"
