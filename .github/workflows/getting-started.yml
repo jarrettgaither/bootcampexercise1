@@ -12,7 +12,7 @@ on:
 
 jobs:
   job2:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - id: string-upload
         uses: jarrettgaither/bootcampexercise2-composite-action@v2
@@ -20,7 +20,7 @@ jobs:
           user-string: 'Howdy Man'
 
   job3:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: job2
     strategy:
       matrix:
