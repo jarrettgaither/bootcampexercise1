@@ -26,7 +26,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - id: string-upload
-        uses: actions/bootcampexercise2-composite-action@v1
+        uses: jarrettgaither/bootcampexercise2-composite-action@v1
         with:
           user-string: 'Howdy Man'
 
