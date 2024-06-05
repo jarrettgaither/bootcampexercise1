@@ -25,13 +25,10 @@ jobs:
   job2:
     runs-on: self-hosted
     steps:
-      - shell: bash
-        run: echo "Hello Partner" > my_string.txt
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      - id: string-upload
+        uses: actions/bootcampexercise2-composite-action@v1
         with:
-          name: my_string
-          path: my_string.txt
+          user-string: 'Howdy Man'
 
   job3:
     runs-on: self-hosted
